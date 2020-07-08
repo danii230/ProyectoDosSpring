@@ -94,9 +94,9 @@ public class StudentService {
         }
     }
 
-    public List<Student> viewStudentUnacceptable() {
+    public List<Student> getOutsatandingStudent() {
         try {
-            return repository.viewStudentUnacceptable();
+            return repository.getOutsatandingStudent();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return null;

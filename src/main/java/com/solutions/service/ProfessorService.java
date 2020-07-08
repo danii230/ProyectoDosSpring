@@ -71,4 +71,22 @@ public class ProfessorService {
             System.out.println(ex.getMessage());
         }
     }
+
+    public void AssignProfessorAdmin(Integer id) {
+        try {
+            repository.AssignProfessorAdmin(id);
+        }catch(Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void DisableProfessor(Integer id) {
+        try {
+            repository.DisableProfessor(id);
+        }catch(Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
 }

@@ -43,6 +43,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Modifying
     @Query(value = "{ call View_Student_unacceptable }", nativeQuery = true)
-    List<Student> viewStudentUnacceptable();
+    List<Student> getOutsatandingStudent();
 
 }

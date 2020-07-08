@@ -26,4 +26,12 @@ public interface ProfessorRepository  extends JpaRepository<Professor, Integer>{
     @Modifying
     @Query(value = "{ call Delete_Professor (:Professor_id) }", nativeQuery = true)
     void deleteProfessor(@Param("Professor_id") Integer id);
+
+    @Modifying
+    @Query(value = "{ call AssignProfessorAdmin (:ProfessorId) }", nativeQuery = true)
+    void AssignProfessorAdmin(@Param("ProfessorId") Integer id);
+
+    @Modifying
+    @Query(value = "{ call DisableProfessor (:ProfessorId) }", nativeQuery = true)
+    void DisableProfessor(@Param("ProfessorId") Integer id);
 }

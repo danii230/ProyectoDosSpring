@@ -72,8 +72,7 @@ public class StudentController {
 
     @GetMapping("/getOutsatandingStudent")
     public List<StudentDTO> getOutsatandingStudent(){
-        return service.viewStudentUnacceptable().stream().map(it -> converter.toDTO(it)).collect(Collectors.toList());
+        return service.getOutsatandingStudent().stream().map(it -> converter.toDTO(it)).collect(Collectors.toList());
     }
-
 
    }

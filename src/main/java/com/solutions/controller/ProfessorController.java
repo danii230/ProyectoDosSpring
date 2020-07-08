@@ -52,4 +52,11 @@ public class ProfessorController {
 
     @RequestMapping(value = "/deleteProfessor/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
     public void deleteProfessor(@PathVariable Integer id) { service.deleteProfessor(id); }
+
+    @RequestMapping(value = "/AssignProfessorAdmin/{id}", method = RequestMethod.PUT, headers = {"Accept=application/json", "Content-type=application/json"})
+    public void  AssignProfessorAdmin(@PathVariable Integer id) { service. AssignProfessorAdmin(id); }
+
+    @RequestMapping(value = "/DisableProfessor/{id}", method = RequestMethod.PUT, headers = {"Accept=application/json", "Content-type=application/json"})
+    public void  DisableProfessor(@PathVariable Integer id) { service. DisableProfessor(id); }
 }
+
