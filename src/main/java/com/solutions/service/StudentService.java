@@ -63,4 +63,43 @@ public class StudentService {
             System.out.println(ex.getMessage());
         }
     }
+    public void admitedStudent (Integer id){
+        try {
+            repository.admitedStudent(id);
+        }
+
+        catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
+    public void assingStudentPresident (Integer id){
+        try {
+            repository.assingStudentPresident(id);
+        }
+
+        catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void disableStudent (Integer id){
+        try {
+            repository.disableStudent(id);
+        }
+
+        catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public List<Student> viewStudentUnacceptable() {
+        try {
+            return repository.viewStudentUnacceptable();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
 }

@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 
@@ -26,4 +28,21 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Modifying
     @Query(value = "{ call Delete_Student (:Student_id) }", nativeQuery = true)
     void deleteStudent(@Param("Student_id") Integer id);
+
+    @Modifying
+    @Query(value = "{ call Update_Admited_Student (:Student_id) }", nativeQuery = true)
+    void admitedStudent(@Param("Student_id") Integer id);
+
+    @Modifying
+    @Query(value = "{ call Assign_Student_President (:Student_id) }", nativeQuery = true)
+    void assingStudentPresident(@Param("Student_id") Integer id);
+
+    @Modifying
+    @Query(value = "{ call Disable_Student (:Student_id) }", nativeQuery = true)
+    void disableStudent(@Param("Student_id") Integer id);
+
+    @Modifying
+    @Query(value = "{ call View_Student_unacceptable }", nativeQuery = true)
+    List<Student> viewStudentUnacceptable();
+
 }

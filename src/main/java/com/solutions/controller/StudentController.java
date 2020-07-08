@@ -30,6 +30,8 @@ public class StudentController {
     AppUserService app_userService;
     @Autowired
     private StudentService service;
+    @Autowired
+    private EmailService email;
 
     @GetMapping("/getAllStudents")
     public List<StudentDTO> getAllStudents(){
@@ -46,6 +48,7 @@ public class StudentController {
     public void insertStudent(@RequestBody StudentDTO studentDTO){
         System.out.println(studentDTO.toString());
         service.insertStudent(converter.toEntity(studentDTO));
+        email.studentSendRequest(studentDTO.getEmail());
     }
 
     @RequestMapping(value = "/updateStudent", method = RequestMethod.PUT, headers =  {"Accept=application/json", "Content-type=application/json"})
@@ -58,4 +61,19 @@ public class StudentController {
     @RequestMapping(value = "/deleteStudent/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
     public void deleteStudent(@PathVariable Integer id) { service.deleteStudent(id); }
 
-}
+    @RequestMapping(value = "/admitedStudent/{id}", method = RequestMethod.PUT, headers = {"Accept=application/json", "Content-type=application/json"})
+    public void admitedStudent(@PathVariable Integer id) { service.admitedStudent(id); }
+
+    @RequestMapping(value = "/assingStudentPresident/{id}", method = RequestMethod.PUT, headers = {"Accept=application/json", "Content-type=application/json"})
+    public void assingStudentPresident(@PathVariable Integer id) { service.assingStudentPresident(id); }
+
+    @RequestMapping(value = "/disableStudent/{id}", method = RequestMethod.PUT, headers = {"Accept=application/json", "Content-type=application/json"})
+    public void  disableStudent(@PathVariable Integer id) { service. disableStudent(id); }
+
+    @GetMapping("/getOutsatandingStudent")
+    public List<StudentDTO> getOutsatandingStudent(){
+        return service.viewStudentUnacceptable().stream().map(it -> converter.toDTO(it)).collect(Collectors.toList());
+    }
+
+
+   }
