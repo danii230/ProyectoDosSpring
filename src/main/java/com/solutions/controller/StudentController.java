@@ -59,10 +59,16 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/deleteStudent/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
-    public void deleteStudent(@PathVariable Integer id) { service.deleteStudent(id); }
+    public void deleteStudent(@RequestBody StudentDTO studentDTO, @PathVariable Integer id) {
+        service.deleteStudent(id);
+        email.studentDenny(studentDTO.getEmail());
+    }
 
     @RequestMapping(value = "/admitedStudent/{id}", method = RequestMethod.PUT, headers = {"Accept=application/json", "Content-type=application/json"})
-    public void admitedStudent(@PathVariable Integer id) { service.admitedStudent(id); }
+    public void admitedStudent(@RequestBody StudentDTO studentDTO, @PathVariable Integer id) {
+        service.admitedStudent(id);
+        email.studentDenny(studentDTO.getEmail());
+    }
 
     @RequestMapping(value = "/assingStudentPresident/{id}", method = RequestMethod.PUT, headers = {"Accept=application/json", "Content-type=application/json"})
     public void assingStudentPresident(@PathVariable Integer id) { service.assingStudentPresident(id); }

@@ -25,6 +25,8 @@ public class ProfessorController {
     AppUserService app_userService;
     @Autowired
     private ProfessorService service;
+    @Autowired
+    private EmailService email;
 
     @GetMapping("/getAllProfessors")
     public List<ProfessorDTO> getAllProfessors(){
@@ -41,6 +43,7 @@ public class ProfessorController {
     public void insertProfessor(@RequestBody ProfessorDTO professorDTO){
         System.out.println(professorDTO.toString());
         service.insertProfessor(converter.toEntity(professorDTO));
+        email.professorNewRequest(professorDTO.getEmail());
     }
 
     @RequestMapping(value = "/updateProfessor", method = RequestMethod.PUT, headers =  {"Accept=application/json", "Content-type=application/json"})
