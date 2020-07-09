@@ -10,6 +10,7 @@ public class ProfessorDTO {
     private String phone;
     private boolean isAdmin;
     private int province;
+    private String interest;
     private int canton;
     private int district;
     private byte[] url_photo;
@@ -85,6 +86,12 @@ public class ProfessorDTO {
     public int getDistrict() { return district; }
 
     public void setDistrict(int district) { this.district = district; }
+
+    public String getInterest() { return interest; }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
 
     @Override
     public String toString() {

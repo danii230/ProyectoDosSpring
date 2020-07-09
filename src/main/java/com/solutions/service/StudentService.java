@@ -46,7 +46,7 @@ public class StudentService {
         try {
             repository.insertStudent(student.getApp_user().getEmail(), student.getApp_user().getPassword(),
                     student.getApp_user().getName(), student.getApp_user().getLast_name(),
-                    student.getApp_user().getPhone(), student.getApp_user().getProvince().getProvince_id(),student.getApp_user().getCanton().getCanton_id(),student.getApp_user().getDistrict().getDistrict_id());
+                    student.getApp_user().getPhone());
         }
         catch(Exception ex) {
             System.out.println(ex.getMessage());
@@ -94,9 +94,9 @@ public class StudentService {
         }
     }
 
-    public List<Student> getOutsatandingStudent() {
+    public List<Student> getOutsatadingStudent() {
         try {
-            return repository.getOutsatandingStudent();
+            return repository.getOutsatadingStudent();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return null;

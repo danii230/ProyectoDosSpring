@@ -56,4 +56,9 @@ public class CourseController {
             return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/api/coursesActive")
+    public List<Course> coursesActive(){
+        return service.coursesActive();
+    }
 }

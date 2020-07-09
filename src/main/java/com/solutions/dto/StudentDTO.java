@@ -11,6 +11,7 @@ public class StudentDTO {
     private String phone;
     private boolean admited;
     private boolean is_president;
+    private String interest;
     private int province;
     private int canton;
     private int district;
@@ -92,6 +93,13 @@ public class StudentDTO {
 
     public void setDistrict(int district) { this.district = district; }
 
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
 
     @Override
     public String toString() {

@@ -11,12 +11,10 @@ public interface ProfessorRepository  extends JpaRepository<Professor, Integer>{
 
 
     @Modifying
-    @Query(value = "{ call Add_Professor (:email, :password, :name, :lastName, :phone, :province, :canton, :district, :is_admin) }", nativeQuery = true)
+    @Query(value = "{ call Add_Professor (:email, :password, :name, :lastName, :phone, :is_admin) }", nativeQuery = true)
     void insertProfessor(@Param("email") String email, @Param("password") String password,
                          @Param("name") String name, @Param("lastName") String last_name,
-                         @Param("phone") String phone,@Param("province") int province,
-                         @Param("canton") int canton, @Param("district") int district,
-                         @Param("is_admin") boolean is_admin);
+                         @Param("phone") String phone, @Param("is_admin") boolean is_admin);
 
     @Modifying
     @Query(value = "{ call UpdateProfessor (:ProfessorId, :Password, :URLPhoto, :Name, :LastName, :Phone, :Province, :Canton, :District, :Interest) }", nativeQuery = true)

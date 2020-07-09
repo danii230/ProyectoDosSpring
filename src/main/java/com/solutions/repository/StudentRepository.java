@@ -13,11 +13,10 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 
     @Modifying
-    @Query(value = "{ call Add_Student (:email, :password, :name, :lastName, :phone, :province, :canton, :district) }", nativeQuery = true)
+    @Query(value = "{ call Add_Student (:email, :password, :name, :lastName, :phone) }", nativeQuery = true)
     void insertStudent(@Param("email") String email, @Param("password") String password,
                          @Param("name") String name, @Param("lastName") String last_name,
-                         @Param("phone") String phone, @Param("province") int province,
-                         @Param("canton") int canton, @Param("district") int district);
+                         @Param("phone") String phone);
 
     @Modifying
     @Query(value = "{ call UpdateStudent (:StudentId, :Password, :URLPhoto, :Name, :LastName, :Phone, :Province, :Canton, :District, :Interest) }", nativeQuery = true)
@@ -41,9 +40,9 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query(value = "{ call Disable_Student (:Student_id) }", nativeQuery = true)
     void disableStudent(@Param("Student_id") Integer id);
 
-    @Modifying
-    @Query(value = "{ call View_Student_unacceptable }", nativeQuery = true)
-    List<Student> getOutsatandingStudent();
+
+    @Query(value = " SELECT * FROM  Student s WHERE s.Admited = 0", nativeQuery = true)
+    List<Student> getOutsatadingStudent();
 
 //    @Modifying
 //    @Query(value = "{ call FindStudentByEmail (:email) }", nativeQuery = true)

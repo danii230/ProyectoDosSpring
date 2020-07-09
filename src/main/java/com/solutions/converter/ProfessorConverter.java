@@ -43,6 +43,7 @@ public class ProfessorConverter implements ConverterInterface<Professor, Profess
         app_user.setCanton(canton);
         app_user.setDistrict(district);
         app_user.setUrl_photo(professorDTO.getUrl_photo());
+        app_user.setInterest(professorDTO.getInterest());
 
         Professor professor = new Professor();
         professor.setProfessor_id(professorDTO.getProfessor_id());
@@ -71,6 +72,7 @@ public class ProfessorConverter implements ConverterInterface<Professor, Profess
         professorDTO.setCanton(app_User.getCanton().getCanton_id());
         professorDTO.setDistrict(app_User.getDistrict().getDistrict_id());
         professorDTO.setAdmin(professor.isIs_admin());
+        professorDTO.setInterest(professor.getApp_user().getInterest());
 
         return professorDTO;
     }

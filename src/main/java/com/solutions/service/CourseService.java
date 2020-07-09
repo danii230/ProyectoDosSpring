@@ -20,6 +20,11 @@ public class CourseService {
         return repo.findAll();
     }
 
+    public List<Course> coursesActive(){
+
+        return repo.coursesActive();
+    }
+
     public void save(Course course){
         repo.save(course);
     }

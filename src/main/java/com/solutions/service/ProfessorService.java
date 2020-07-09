@@ -53,7 +53,7 @@ public class ProfessorService {
         try {
             repository.insertProfessor(professor.getApp_user().getEmail(), professor.getApp_user().getPassword(),
                     professor.getApp_user().getName(), professor.getApp_user().getLast_name(),
-                    professor.getApp_user().getPhone(), professor.getApp_user().getProvince().getProvince_id(),professor.getApp_user().getCanton().getCanton_id(),professor.getApp_user().getDistrict().getDistrict_id(),professor.isIs_admin());
+                    professor.getApp_user().getPhone(), professor.isIs_admin());
         }
         catch(Exception ex) {
             System.out.println(ex.getMessage());
