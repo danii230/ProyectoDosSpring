@@ -1,4 +1,5 @@
 package com.solutions.repository;
+import com.solutions.proyecto.AppUser;
 import com.solutions.proyecto.Professor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -34,4 +35,10 @@ public interface ProfessorRepository  extends JpaRepository<Professor, Integer>{
     @Modifying
     @Query(value = "{ call DisableProfessor (:ProfessorId) }", nativeQuery = true)
     void DisableProfessor(@Param("ProfessorId") Integer id);
+
+//    @Modifying
+//    @Query(value = "{ call FindProfessorByEmail (:email) }", nativeQuery = true)
+    @Query(value = " SELECT * FROM   Professor p, App_User a WHERE p.App_User =a.App_User_Id and a.Email= :email", nativeQuery = true)
+    Professor findProfessorByEmail(@Param("email") String email);
+
 }

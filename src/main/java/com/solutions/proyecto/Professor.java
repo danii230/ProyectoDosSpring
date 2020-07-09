@@ -97,4 +97,17 @@ public class Professor {
     public void setUpdate_by(String update_by) {
         this.update_by = update_by;
     }
+
+    @Override
+    public String toString() {
+        return "Professor{" +
+                "professor_id=" + professor_id +
+                ", is_admin=" + is_admin +
+                ", app_user=" + app_user +
+                ", create_at=" + create_at +
+                ", update_at=" + update_at +
+                ", create_by='" + create_by + '\'' +
+                ", update_by='" + update_by + '\'' +
+                '}';
+    }
 }

@@ -1,10 +1,14 @@
 package com.solutions.service;
+import com.solutions.proyecto.AppUser;
 import com.solutions.proyecto.Professor;
+import com.solutions.repository.AppUserRepository;
 import com.solutions.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.net.Authenticator;
+import java.security.AuthProvider;
 import java.util.List;
 
 @Service
@@ -13,6 +17,9 @@ import java.util.List;
 public class ProfessorService {
     @Autowired
     private ProfessorRepository repository;
+
+    @Autowired
+    private AppUserRepository repositoryAppUser;
 
     public List<Professor> findAll() {
         try {
@@ -31,14 +38,6 @@ public class ProfessorService {
             return null;
         }
     }
-
-//    Metodo(email, password)
-    //user = findByemail(String email)
-//    if(user && user.password == password){
-//        return user;
-//    } else{
-//      error 404
-//  }
 
     //Stored procedures
     public void deleteProfessor(Integer id) {

@@ -45,4 +45,11 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query(value = "{ call View_Student_unacceptable }", nativeQuery = true)
     List<Student> getOutsatandingStudent();
 
+//    @Modifying
+//    @Query(value = "{ call FindStudentByEmail (:email) }", nativeQuery = true)
+//    Student findStudentByEmail(@Param("email") String email);
+
+    @Query(value = " SELECT * FROM   Student s, App_User a WHERE s.App_User = a.App_User_Id and a.Email= :email", nativeQuery = true)
+    Student findStudentByEmail(@Param("email") String email);
+
 }
